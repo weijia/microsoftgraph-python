@@ -4,7 +4,11 @@ import requests
 import json
 from microsoftgraph import exceptions
 from microsoftgraph.decorators import token_required
-from urllib.parse import urlencode, urlparse, quote_plus
+try:
+    from urllib.parse import urlencode, urlparse, quote_plus
+except ImportError:
+    from urlparse import urlparse
+    from urllib import urlencode, quote_plus
 
 
 class Client(object):
